@@ -1,0 +1,23 @@
+<picture>
+  {{ $isJPG := eq (path.Ext .image) ".jpg" }}
+  {{ $isPNG := eq (path.Ext .image) ".png" }}
+
+  {{ if ($isPNG) -}}
+    <!-- this is a png -->
+    {{ $webpPath:= replace .image ".png" ".webp" }}
+    <source srcset="/{{ $webpPath | safeURL }}" type="image/webp" >
+  {{- end }}
+
+  {{ if ($isJPG) -}}
+    <!-- this is a png -->
+    {{ $webpPath:= replace .image ".jpg" ".webp" }}
+    <source srcset="/{{ $webpPath | safeURL }}" type="image/webp" >
+  {{- end }}
+
+  <img
+    src="{{ .image | absURL }}"
+    alt="{{ .altText }}"
+    loading="lazy"
+    decoding="async"
+  />
+</picture>

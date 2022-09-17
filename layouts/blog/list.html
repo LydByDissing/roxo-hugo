@@ -21,7 +21,8 @@
         <article class="site-blog-post">
           {{ with .Params.image }}
           <div class="site-blog-post-thumb">
-            <img src="{{ . | absURL }}" alt="post-thumb">
+            {{ partial "image.html" (dict "context" . "image" . "altText" "post-thumb") }}
+            <!--<img src="{{ . | absURL }}" alt="post-thumb"> -->
           </div>
           {{ end }}
           <div class="site-blog-post-content">
