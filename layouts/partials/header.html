@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg site-navigation">
   <div class="container">
     <a class="navbar-brand" href="{{ .Site.BaseURL }}">
-      <img src="{{ "images/logo.png" | absURL }}" alt="logo" />
+      {{ partial "image.html" (dict "context" . "image" "images/logo.png" "altText" "logo") }}
+      <!-- <img src="{{ "images/logo.png" | absURL }}" alt="logo" /> -->
     </a>
     <button
       class="navbar-toggler collapsed"
@@ -16,9 +17,9 @@
 
     <div class="collapse navbar-collapse" id="sitenavbar">
       <ul class="navbar-nav ml-auto main-nav">
-        {{$menu := (.Site.Menus.nav)}} 
-        {{$len := (len $menu)}} 
-        {{ range $index, $element := $menu }} 
+        {{$menu := (.Site.Menus.nav)}}
+        {{$len := (len $menu)}}
+        {{ range $index, $element := $menu }}
           {{ if eq (add $index 1) $len }}
           <li class="nav-item">
             <a
@@ -38,7 +39,7 @@
               >{{ .Name }}</a
             >
           </li>
-          {{ end }} 
+          {{ end }}
         {{ end }}
       </ul>
     </div>
