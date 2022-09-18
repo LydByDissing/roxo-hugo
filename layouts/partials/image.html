@@ -1,19 +1,21 @@
 <picture>
   {{ $isJPG := eq (path.Ext .image) ".jpg" }}
   {{ $isPNG := eq (path.Ext .image) ".png" }}
-
   {{ if ($isPNG) -}}
     <!-- this is a png -->
-    {{ $webpPath:= replace .image ".png" ".webp" }}
+    {{ $avifPath:= replace .image ".png" ".png.avif" }}
+    <source srcset="/{{ $avifPath | safeURL }}" type="image/avif" >
+    {{ $webpPath:= replace .image ".png" ".png.webp" }}
     <source srcset="/{{ $webpPath | safeURL }}" type="image/webp" >
   {{- end }}
-
   {{ if ($isJPG) -}}
-    <!-- this is a png -->
-    {{ $webpPath:= replace .image ".jpg" ".webp" }}
+    <!-- this is a jpg -->
+    {{ $avifPath:= replace .image ".jpg" ".jpg.avif" }}
+    <source srcset="/{{ $avifPath | safeURL }}" type="image/avif" >
+    {{ $webpPath:= replace .image ".jpg" ".jpg.webp" }}
     <source srcset="/{{ $webpPath | safeURL }}" type="image/webp" >
-  {{- end }}
 
+  {{- end }}
   <img
     src="{{ .image | absURL }}"
     alt="{{ .altText }}"
