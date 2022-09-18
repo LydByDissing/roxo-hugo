@@ -3,16 +3,16 @@
   {{ $isPNG := eq (path.Ext .image) ".png" }}
   {{ if ($isPNG) -}}
     <!-- this is a png -->
-    {{ $avifPath:= replace .image ".png" ".png.avif" }}
+    {{ $avifPath:= replace .image ".png" ".avif" }}
     <source srcset="/{{ $avifPath | safeURL }}" type="image/avif" >
-    {{ $webpPath:= replace .image ".png" ".png.webp" }}
+    {{ $webpPath:= replace .image ".png" ".webp" }}
     <source srcset="/{{ $webpPath | safeURL }}" type="image/webp" >
   {{- end }}
   {{ if ($isJPG) -}}
     <!-- this is a jpg -->
-    {{ $avifPath:= replace .image ".jpg" ".jpg.avif" }}
+    {{ $avifPath:= replace .image ".jpg" ".avif" }}
     <source srcset="/{{ $avifPath | safeURL }}" type="image/avif" >
-    {{ $webpPath:= replace .image ".jpg" ".jpg.webp" }}
+    {{ $webpPath:= replace .image ".jpg" ".webp" }}
     <source srcset="/{{ $webpPath | safeURL }}" type="image/webp" >
 
   {{- end }}
