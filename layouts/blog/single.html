@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <article class="site-blog-details">
-          <p><span>{{ .PublishDate.Format "January 2, 2006" }}</span> by <span>{{ .Params.author }}</span></p>
           <h2 class="blog-title">{{ .Title }}</h2>
           {{ partial "image.html" (dict "context" . "image" .Params.feature_image "altText" "blog-feature-image") }}
           {{ .Content }}
