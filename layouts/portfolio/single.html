@@ -13,7 +13,7 @@
           </div>
           <div class="site-project-single-image">
             {{ range .Params.project_images }}
-              {{ partial "image.html" (dict "context" . "image" . "altText" "project image") }}
+              {{ partial "image.html" (dict "context" . "image" . "altText" "project image" "enableLink" "true") }}
             {{ end }}
           </div>
           {{ if .NextInSection }}

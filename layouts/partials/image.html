@@ -16,12 +16,26 @@
     <source srcset="/{{ $webpPath | safeURL }}" type="image/webp" >
 
   {{- end }}
-  <img
-    src="{{ .image | absURL }}"
-    alt="{{ .altText }}"
-    width="{{ .width }}"
-    height="{{ .height }}"
-    loading="lazy"
-    decoding="async"
-  />
+
+  {{ if (eq .enableLink "true") }}
+    <a href="{{ .image | absURL }}">
+      <img
+        src="{{ .image | absURL }}"
+        alt="{{ .altText }}"
+        width="{{ .width }}"
+        height="{{ .height }}"
+        loading="lazy"
+        decoding="async"
+      />
+    </a>
+  {{ else }}
+    <img
+      src="{{ .image | absURL }}"
+      alt="{{ .altText }}"
+      width="{{ .width }}"
+      height="{{ .height }}"
+      loading="lazy"
+      decoding="async"
+    />
+  {{ end }}
 </picture>
